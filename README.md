@@ -29,6 +29,21 @@ test-automation-exercise/
 
 - Node.js v24.13.0 (see `.nvmrc`)
 - npm
+- [Yarn](https://yarnpkg.com/) (for the client app)
+
+### Installing Yarn
+
+If you don't have Yarn installed, you can install it via npm:
+
+```bash
+npm install -g yarn
+```
+
+Or via Corepack (bundled with Node.js 16+):
+
+```bash
+corepack enable
+```
 
 ## Getting Started
 
@@ -38,17 +53,21 @@ Run the following command to clone the repo:
 curl -fsSL https://raw.githubusercontent.com/frontegg/test-automation-exercise/master/scripts/setup.sh | bash
 ```
 
-Then install the dependencies and run the tests:
+### Install and start the client app
+
+```bash
+cd test-automation-exercise/client-app/client-app-vite
+yarn install
+yarn start
+```
+
+The client app will be available at `http://localhost:3000`.
+
+### Install test dependencies and run the tests
 
 ```bash
 cd test-automation-exercise/tests
 npm install
-```
-
-### Run the tests
-
-```bash
-cd test-automation-exercise/tests
 npm test
 ```
 

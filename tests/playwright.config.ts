@@ -13,14 +13,19 @@ const playwrightConfig: PlaywrightTestConfig = {
     },
     projects: [
         {
+            name: 'HealthCheck',
+            testMatch: /global.setup.ts/
+        },
+        {
             name: 'all',
             testDir: TestDirectory.ALL,
+            testMatch: /.*.spec.ts/,
+            dependencies: ['HealthCheck'],
             testIgnore: []
         }
     ],
     outputDir: 'test-results/',
     reporter: getReporters(),
-    testMatch: /.*.spec.ts/,
     timeout: 120 * 1000,
     expect: { timeout: 60 * 1000 },
     retries: 1,

@@ -1,8 +1,9 @@
-import { test as setup } from '@playwright/test';
+import { test as setup, expect } from '@playwright/test';
 
-setup('HealthCheck', async ({page}) => {
-    console.log('Validate `https://api.stg.frontegg.com/test` returns 200')
-    await page.route('https://api.stg.frontegg.com/test', route => route.fulfill({
-        status: 200
-    }))
+setup.describe('Healthcheck', () => {
+    setup('Validate `https://api.stg.frontegg.com/test` returns 200', async ({request}) => {
+        const response = await request.get('https://api.stg.frontegg.com/test')
+        const responseStatus = await response.status()
+        await expect(responseStatus).toEqual(200)
+    })
 });

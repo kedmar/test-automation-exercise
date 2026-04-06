@@ -17,12 +17,8 @@ test.describe('Login Page Tests', () => {
     test('Failed login attempt', async ({ page }) => {
         const loginPage = new LoginPage(page);
         await loginPage.goto();
-        // const identifier = page.getByPlaceholder('name@example.com');
-        // const password = page.getByRole('textbox', { name: 'password' });
         await loginPage.fillLoginFields('roni@gmail.com', 'Qwerty12!');
-        // selectors.setTestIdAttribute('data-test-id');
-        await loginPage.submitAndvalidateResponseStatus(400);
+        await loginPage.submitAndvalidateResponseStatus(401);
         await loginPage.validateLoginErrorIsPresent();
-        // await expect(page.getByTestId('login-error')).toContainText('Incorrect email or password');
     });
 });
